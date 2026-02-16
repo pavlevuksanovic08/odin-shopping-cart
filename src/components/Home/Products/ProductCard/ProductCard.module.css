@@ -1,0 +1,110 @@
+/* Card wrapper */
+.card {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Image container */
+.imgContainer {
+    display: flex;
+    justify-content: center;
+    background-color: #262626;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* Product image */
+.image {
+    width: auto;
+    height: 10vw;
+}
+
+/* Quantity selector */
+.quantitySelector {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+/* Base quantity button */
+.quantityBtn {
+    background-color: #262626;
+    color: white;
+    border: none;
+    height: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+
+    --border-color: #191919;
+}
+
+/* Minus button */
+.minusBtn {
+    composes: quantityBtn;
+    border-radius: var(--index) 0 0 var(--index);
+    border-right: 1px solid var(--border-color);
+}
+
+/* Plus button */
+.plusBtn {
+    composes: quantityBtn;
+    border-radius: 0 var(--index) var(--index) 0;
+    border-left: 1px solid var(--border-color);
+}
+
+/* Quantity display */
+.quantity {
+    height: 100%;
+    background-color: #262626;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+}
+
+.addToCartBtn {
+    background-color: #E2B82F;
+    border: none;
+    border-radius: var(--index);
+    padding: 0.5rem;
+    font-size: 12px;
+    font-family: "GFS Didot", serif;
+    font-weight: 500;
+}
+
+/* Add to cart wrapper */
+.addToCart {
+    display: flex;
+    gap: 20px;
+    height: 5vh;
+    /* justify-content: space-between; optional */
+
+
+    --index: 5px;
+
+}
+
+.productData {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.priceAndQuantity {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.title {
+    font-size: clamp(0.5rem, 1.2vw, 3rem);
+}
+
+.price {
+    font-size: clamp(0.5rem, 1.2vw, 3rem);
+    font-weight: 700;
+}
+
+.quantityBtn:active {
+    background-color: #222222;
+}
