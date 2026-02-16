@@ -1,0 +1,41 @@
+
+.himher {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+
+    --index: 5rem;
+}
+
+.himherContainer {
+    display: flex;
+    align-items: center;
+    gap: var(--index);
+    padding: 2rem var(--index);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.heading {
+    font-size: clamp(2rem, 5vw, 4rem);
+    text-align: center;
+    font-weight: normal;
+}
+
+.item {
+    width: calc(100% - var(--index) * 3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.itemTxt {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
