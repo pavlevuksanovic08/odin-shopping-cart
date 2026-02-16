@@ -1,0 +1,29 @@
+
+.heading {
+    font-size: clamp(2rem, 5vw, 4rem);
+    text-align: center;
+    font-weight: normal;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.centerDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.products {
+    --index: 5rem;
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--index);
+    padding: 2rem var(--index);
+    box-sizing: border-box;
+}
