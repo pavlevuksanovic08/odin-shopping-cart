@@ -1,0 +1,25 @@
+.placeholder {
+    --index: 5rem;
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr;
+    padding: 2rem var(--index);
+    box-sizing: border-box;
+    margin: 5% auto;
+}
+
+.card {
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.separator {
+    width: 1px;
+    height: 100%;
+    background-color: #4e4e4e;
+}
+
+.text {
+    font-size: clamp(0.5rem, 2.2vh, 6rem)
+}
