@@ -1,0 +1,18 @@
+
+.footer {
+    --index: 5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: fit-content;
+    padding: 1rem var(--index);
+}
+
+.logo {
+    width: clamp(10rem, 15vw, 30rem);
+}
+
+.text {
+    font-size: clamp(1rem, 3vh, 5rem)
+}
