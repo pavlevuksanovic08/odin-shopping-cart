@@ -30,10 +30,12 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    img {
-        width: 100%;
-        height: auto;
-    }
+}
+
+.modelImg {
+    width: 100%;
+    aspect-ratio: 3/4;
+    min-height: 320px;
 }
 
 .itemTxt {
