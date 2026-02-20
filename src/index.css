@@ -11,4 +11,7 @@ html, body, #root {
     font-family: "GFS Didot", serif;
     background-color: #1b1b1b;
     color: white;
+
+    --margin: 5%;
+    --index: 5rem;
 }

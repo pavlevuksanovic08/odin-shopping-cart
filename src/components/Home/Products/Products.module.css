@@ -7,7 +7,8 @@
 
 .container {
     width: 100%;
-    height: 100%;
+    height: fit-content;
+    margin: var(--margin) auto;
 }
 
 .centerDiv {
@@ -18,8 +19,6 @@
 }
 
 .products {
-    --index: 5rem;
-
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);

@@ -16,7 +16,7 @@ function Products() {
     }, []);
 
     return (
-        <section data-testid="products-section" style={{height: "fit-content"}}>
+        <section data-testid="products-section" className={styles.container}>
             <h2 className={styles.heading}>BEST GIFTS</h2>
             <div className={styles.centerDiv}>
                 <div data-testid="products" className={styles.products}>

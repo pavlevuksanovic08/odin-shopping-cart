@@ -64,7 +64,7 @@
 .addToCartBtn {
     background-color: #E2B82F;
     border: none;
-    border-radius: var(--index);
+    border-radius: var(--radius);
     padding: 0.5rem;
     font-size: 12px;
     font-family: "GFS Didot", serif;
@@ -76,10 +76,8 @@
     display: flex;
     gap: 20px;
     height: 5vh;
-    /* justify-content: space-between; optional */
 
-
-    --index: 5px;
+    --radius: 5px;
 
 }
 

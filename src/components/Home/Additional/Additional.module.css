@@ -1,12 +1,10 @@
 .placeholder {
-    --index: 5rem;
-
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr;
     padding: 2rem var(--index);
     box-sizing: border-box;
-    margin: 5% auto;
+    margin: var(--margin) auto;
 }
 
 .card {
