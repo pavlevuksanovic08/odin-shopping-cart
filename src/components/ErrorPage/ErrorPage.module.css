@@ -1,0 +1,32 @@
+.section {
+    margin: auto 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: ceter;
+    text-align: center;
+    align-items: center;
+}
+
+.heading {
+    margin-top: 20vh;
+    font-size: clamp(3rem, 5vw, 12rem);
+}
+
+.msg {
+    font-size: clamp(1.5rem, 1.5vw, 3rem);
+}
+
+.link {
+    font-size: clamp(1.5rem, 1.5vw, 3rem);
+    color: #E2B82F;
+    text-decoration: none;
+    margin-top: 10vh;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.status {
+    color: #E2B82F
+}
