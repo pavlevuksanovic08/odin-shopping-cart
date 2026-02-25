@@ -1,0 +1,22 @@
+.shop {
+    margin-top: 10vh;
+    margin-bottom: 20vh;
+}
+
+.productsContainer {
+    display: flex;
+    justify-content: center;
+    margin: auto var(--index);
+}
+
+.products {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+}
+
+.heading {
+    text-align: center;
+    font-size: clamp(3rem, 4vw, 6rem);
+    font-weight: normal;
+}
