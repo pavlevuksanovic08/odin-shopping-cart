@@ -27,7 +27,9 @@ function ProductCard({product}) {
                         <div className={styles.addToCart}>
                             <div className={styles.quantitySelector} data-testid="selector">
                                 <button className={styles.minusBtn} onClick={decreaseQuantity}>-</button>
-                                <p className={styles.quantity} data-testid="quantity">{quantity}</p>
+                                <div className={styles.quantityContainer}>
+                                    <p data-testid="quantity">{quantity}</p>
+                                </div>
                                 <button className={styles.plusBtn} onClick={increaseQuantity}>+</button>
                             </div>
                             <button className={styles.addToCartBtn}>ADD TO CART</button>

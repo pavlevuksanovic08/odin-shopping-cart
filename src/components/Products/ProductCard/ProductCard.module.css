@@ -1,6 +1,6 @@
 /* Card wrapper */
 .card {
-    width: 100%;
+    max-width: 20vw;
     height: 100%;
     box-sizing: border-box;
 }
@@ -17,7 +17,7 @@
 /* Product image */
 .image {
     width: auto;
-    height: 10vw;
+    max-height: 10vw;
 }
 
 /* Quantity selector */
@@ -53,13 +53,16 @@
     border-left: 1px solid var(--border-color);
 }
 
-/* Quantity display */
-.quantity {
-    height: 100%;
+.quantityContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #262626;
     padding: 0.5rem 1rem;
     box-sizing: border-box;
+    height: 100%;
 }
+
 
 .addToCartBtn {
     background-color: #E2B82F;
@@ -75,8 +78,8 @@
 .addToCart {
     display: flex;
     gap: 20px;
+    max-height: 10vh;
     height: 5vh;
-
     --radius: 5px;
 
 }
