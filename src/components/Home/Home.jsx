@@ -1,7 +1,7 @@
 import styles from './Home.module.css'
 import model1 from '../../assets/images/model1a.jpg'
 import Himher from './Herhim/Herhim';
-import Products from './Products/Products';
+import Products from '../Products/Products';
 import Additional from './Additional/Additional';
 
 function Home() {
