@@ -1,0 +1,85 @@
+.card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    box-sizing: border-box;
+    position: relative;
+    padding-right: 10rem;
+}
+
+.cardData {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: clamp(1.1rem, 2.5vw, 2rem);
+}
+
+.price {
+    color: #E2B82F;
+    font-size: clamp(1.1rem, 2vw, 1.7rem);
+}
+
+.xDiv {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+}
+
+
+
+
+/*QUANTITY INPUT STYLING*/
+
+.btnInput {
+    border: none;
+    color: white;
+    background-color: #313131;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+
+
+
+}
+
+.quantity {
+    display: flex;
+
+     --border-color: #191919;
+}
+
+.input {
+    composes: btnInput;
+    width: 2rem;
+    text-align: center;
+
+}
+
+.input:focus {
+    border: none;
+    outline: none
+}
+
+.btn {
+    composes: btnInput;
+}
+
+.left {
+    composes: btn;
+    border-radius: var(--index) 0  0 var(--index);
+    border-right: 1px solid var(--border-color);
+}
+
+.right {
+    composes: btn;
+    border-radius: 0 var(--index) var(--index) 0;
+    border-left: 1px solid var(--border-color);
+
+}
+
