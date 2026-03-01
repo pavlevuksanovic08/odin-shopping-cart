@@ -20,50 +20,6 @@
     max-height: 10vw;
 }
 
-/* Quantity selector */
-.quantitySelector {
-    display: flex;
-    align-items: center;
-    gap: 0;
-}
-
-/* Base quantity button */
-.quantityBtn {
-    background-color: #262626;
-    color: white;
-    border: none;
-    height: 100%;
-    padding: 0.5rem;
-    box-sizing: border-box;
-
-    --border-color: #191919;
-}
-
-/* Minus button */
-.minusBtn {
-    composes: quantityBtn;
-    border-radius: var(--index) 0 0 var(--index);
-    border-right: 1px solid var(--border-color);
-}
-
-/* Plus button */
-.plusBtn {
-    composes: quantityBtn;
-    border-radius: 0 var(--index) var(--index) 0;
-    border-left: 1px solid var(--border-color);
-}
-
-.quantityContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #262626;
-    padding: 0.5rem 1rem;
-    box-sizing: border-box;
-    height: 100%;
-}
-
-
 .addToCartBtn {
     background-color: #E2B82F;
     border: none;

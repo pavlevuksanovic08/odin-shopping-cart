@@ -1,0 +1,46 @@
+.btnInput {
+    border: none;
+    color: white;
+    background-color: #313131;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    box-sizing: border-box;
+}
+
+.quantity {
+    display: flex;
+    height: 100%;
+     --border-color: #191919;
+}
+
+.input {
+    composes: btnInput;
+    max-width: 3rem;
+    width: fit-content;
+    text-align: center;
+
+}
+
+.input:focus {
+    border: none;
+    outline: none
+}
+
+.btn {
+    composes: btnInput;
+}
+
+.left {
+    composes: btn;
+    border-radius: var(--index) 0  0 var(--index);
+    border-right: 1px solid var(--border-color);
+}
+
+.right {
+    composes: btn;
+    border-radius: 0 var(--index) var(--index) 0;
+    border-left: 1px solid var(--border-color);
+
+}

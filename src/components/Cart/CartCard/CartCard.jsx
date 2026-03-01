@@ -1,3 +1,4 @@
+import QuantitySelector from "../../QuantitySelector/QuantitySelector"
 import styles from "./CartCard.module.css"
 import { X } from "lucide-react"
 
@@ -17,11 +18,7 @@ function CartCard({ product }) {
                         <p className={styles.price}>${product.item.price}</p>
                     </div>
                     <div>
-                        <div data-testid="quantityInput" className={styles.quantity}>
-                            <button className={`${styles.btn} ${styles.left}`}>-</button>
-                            <input className={styles.input} defaultValue={product.quantity} />
-                            <button className={`${styles.btn} ${styles.right}`}>+</button>
-                        </div>
+                        <QuantitySelector value={product.quantity}/>
                     </div>
                 </div>
                 <div className={styles.xDiv}>

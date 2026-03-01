@@ -1,18 +1,8 @@
 import { useState } from "react"
 import styles from "./ProductCard.module.css"
+import QuantitySelector from "../../QuantitySelector/QuantitySelector";
 
 function ProductCard({product}) {
-    const [quantity, setQuantity] = useState(1);
-
-    function decreaseQuantity() {
-        const newQuantity = quantity - 1;
-        if (newQuantity > 0) setQuantity(newQuantity);
-    }
-
-    function increaseQuantity() {
-        const newQuantity = quantity + 1;
-        if (newQuantity < 100) setQuantity(newQuantity);
-    }
 
     return (
         <article data-testid="product-card" style={{height: 100 + "%"}}>
@@ -25,13 +15,7 @@ function ProductCard({product}) {
                     <div className={styles.priceAndQuantity}>
                         <p className={styles.price} data-testid="price">${product.price}</p>
                         <div className={styles.addToCart}>
-                            <div className={styles.quantitySelector} data-testid="selector">
-                                <button className={styles.minusBtn} onClick={decreaseQuantity}>-</button>
-                                <div className={styles.quantityContainer}>
-                                    <p data-testid="quantity">{quantity}</p>
-                                </div>
-                                <button className={styles.plusBtn} onClick={increaseQuantity}>+</button>
-                            </div>
+                            <QuantitySelector value={1} />
                             <button className={styles.addToCartBtn}>ADD TO CART</button>
                         </div>
                     </div>
