@@ -72,6 +72,13 @@
     font-size: 12px;
     font-family: "GFS Didot", serif;
     font-weight: 500;
+    transition: transform 0.1s ease;
+
+}
+
+.addToCartBtn:active {
+    background-color: #cca62b;
+    transform: scale(0.97)
 }
 
 /* Add to cart wrapper */

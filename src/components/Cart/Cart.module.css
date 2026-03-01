@@ -69,6 +69,13 @@
     border-radius: 12px;
     background-color: #E2B82F;
     padding: 1rem;
+    transition: transform 0.1s ease;
+
+}
+
+.btn:active {
+    background-color: #cca62b;
+    transform: scale(0.97);
 }
 
 /* EMPTY CART */
