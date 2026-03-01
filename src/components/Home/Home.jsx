@@ -3,8 +3,23 @@ import model1 from '../../assets/images/model1a.jpg'
 import Himher from './Herhim/Herhim';
 import Products from '../Products/Products';
 import Additional from './Additional/Additional';
+import { useLoaderData } from 'react-router-dom';
+
+export async function loader() {
+    const response = await fetch("https://fakestoreapi.com/products");
+    const data = await response.json();
+    const filtered = await data.filter(item => item.category == "jewelery");
+    const arr = [];
+    for (let i = 0; i < 4; i++) {
+        arr.push(filtered[i])
+    }
+    return arr;
+}
 
 function Home() {
+
+    const products = useLoaderData();
+
     return (
         <main style={{height: "fit-content"}}>  
             <div data-testid="home-component" style={{height: 100 + "%"}} className={styles.home}>
@@ -14,7 +29,7 @@ function Home() {
                     </div>
                 </section>
                 <Himher />
-                <Products />
+                <Products products={products}/>
                 <Additional />
             </div>
         </main>

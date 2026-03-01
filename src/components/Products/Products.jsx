@@ -1,20 +1,9 @@
 import styles from "./Products.module.css"
-import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard/ProductCard"
 
-function Products() {
-    const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        const productsFetch = async () => {
-            const response = await fetch("https://fakestoreapi.com/products");
-            const data = await response.json();
-            const filtered = await data.filter(item => item.category == "jewelery");
-            setProducts(filtered);
-        }
-        productsFetch();
-    }, []);
 
+function Products({ products }) {
     return (
         <section data-testid="products-section" className={styles.container}>
             <h2 className={styles.heading}>BEST GIFTS</h2>
