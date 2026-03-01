@@ -32,6 +32,10 @@
     composes: btnInput;
 }
 
+.btn:active {
+    background-color: #292929;
+}
+
 .left {
     composes: btn;
     border-radius: var(--index) 0  0 var(--index);
