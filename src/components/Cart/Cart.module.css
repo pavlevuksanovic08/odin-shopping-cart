@@ -1,4 +1,5 @@
 .cart {
+    margin-top: 15vh;
     padding: var(--index);
     display: flex;
     align-items: flex-start;
