@@ -1,5 +1,5 @@
 
-class Cart {
+export class Cart {
     constructor() {
         this.cartProducts = [];
     }
@@ -35,5 +35,3 @@ class Cart {
         return this.cartProducts.find(cartItem => cartItem.item.id === id);
     }
 }
-
-export default Cart

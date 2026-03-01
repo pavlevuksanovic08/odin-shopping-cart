@@ -1,5 +1,5 @@
 import { describe, it, expect, test } from "vitest";
-import Cart from "./Cart"
+import { Cart } from "./Cart"
 
 describe("Cart Class", () => {
     const testItem = {id: 1, title: "Test", price: 100}
