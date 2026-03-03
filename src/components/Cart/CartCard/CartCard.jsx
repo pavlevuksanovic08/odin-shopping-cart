@@ -1,8 +1,17 @@
 import QuantitySelector from "../../QuantitySelector/QuantitySelector"
 import styles from "./CartCard.module.css"
 import { X } from "lucide-react"
+import { useState } from "react";
 
-function CartCard({ product }) {
+function CartCard({ product, cart }) {
+
+    const [quantity, setQuantity] = useState(product.quantity);
+    
+    function handleQuantityChange(newQuantity) {
+        cart.changeQuantity(product.item.id, newQuantity)
+        setQuantity(newQuantity);
+    }
+
 
     return (
         <article>
@@ -18,11 +27,11 @@ function CartCard({ product }) {
                         <p className={styles.price}>${product.item.price}</p>
                     </div>
                     <div>
-                        <QuantitySelector value={product.quantity}/>
+                        <QuantitySelector value={quantity} handler={handleQuantityChange}/>
                     </div>
                 </div>
                 <div className={styles.xDiv}>
-                    <X className={styles.x} size={32} />
+                    <X className={styles.x} size={32} onClick={() => cart.removeFromCart(product.item.id)}/>
                 </div>
             </div>
         </article>
