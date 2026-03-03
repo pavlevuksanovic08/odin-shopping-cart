@@ -1,42 +1,16 @@
 import { Fragment } from "react";
-import { ShoppingBasket, ShoppingCart } from "lucide-react";
-import { useLoaderData } from "react-router-dom"
+import { ShoppingBasket } from "lucide-react";
+import { useOutletContext } from "react-router-dom"
 import styles from "./Cart.module.css"
 import CartCard from "./CartCard/CartCard";
 
 function Cart() {
 
-    const testProducts = [
-        {
-            item: {
-                id: 1,
-                title: "Test Item",
-                image: "https://picsum.photos/200/300",
-                price: 100
-            },
-            quantity: 10
-        },
-        {
-            item: {
-                id: 1,
-                title: "Test Item",
-                image: "https://picsum.photos/200/300",
-                price: 100
-            },
-            quantity: 10
-        },
-        {
-            item: {
-                id: 1,
-                title: "Test Item",
-                image: "https://picsum.photos/200/300",
-                price: 100  
-            },
-            quantity: 10
-        }
-    ]
-
-    const empty = []
+    const cart = useOutletContext();
+    
+    function totalPrice() {
+        return cart.cartItems.reduce((total, current) => total + current.item.price * current.quantity, 0)
+    }
 
     return (
         <main>
@@ -46,7 +20,7 @@ function Cart() {
                         <p className={styles.productsText}>EVERYTHING YOU'VE SELECTED IS RIGHT HERE. MAKE FINAL ADJUSTMENTS AND CONTINUE TO CHECKOUT.</p>
                         <hr className={styles.productsLine} />
                         <div className={styles.cards}>
-                            {testProducts.length === 0 
+                            {cart.cartItems.length === 0 
                             ? <>
                                 <div className={styles.empty}>
                                     <ShoppingBasket strokeWidth={1} className={styles.icon} />
@@ -57,9 +31,9 @@ function Cart() {
                             </> 
                             : <>
                                 <hr className={styles.splitLine} />
-                                {testProducts.map((product, idx) => (
+                                {cart.cartItems.map((product, idx) => (
                                     <Fragment key={product.item.id + '-' + idx}>
-                                        <CartCard product={product} />
+                                        <CartCard product={product} cart={cart} />
                                         <hr className={styles.splitLine} />
                                     </Fragment>
                                 ))}
@@ -71,7 +45,7 @@ function Cart() {
                         <hr />
                         <div className={styles.summaryComponent}>
                             <p>TOTALY</p>
-                            <p>${}</p>
+                            <p>${totalPrice()}</p>
                         </div>
                         <hr />
                         <div className={styles.summaryComponent}>
@@ -81,7 +55,7 @@ function Cart() {
                         <hr />
                         <div>
                             <p>TOTALY WITH SHIPPING</p>
-                            <p className={styles.total}>${}</p>
+                            <p className={styles.total}>${totalPrice()}</p>
                         </div>
                         <button className={styles.btn}>CHECKOUT</button>
                     </div>
