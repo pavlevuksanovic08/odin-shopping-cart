@@ -1,5 +1,5 @@
 import ProductCard from "../Products/ProductCard/ProductCard"
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useOutletContext } from "react-router-dom";
 import styles from "./Shop.module.css"
 
 export async function loader() {
@@ -11,7 +11,9 @@ export async function loader() {
 
 function Shop() {
     const products = useLoaderData();
-    console.log(products)
+
+    const cart = useOutletContext();
+
     return (
         <main>
             <div className={styles.shop}>
@@ -19,7 +21,7 @@ function Shop() {
                 <div className={styles.productsContainer}>
                     <div className={styles.products}>
                         {products.map(product => (
-                            <ProductCard product={product} key={product.id}/>
+                            <ProductCard product={product} key={product.id} cart={cart}/>
                         ))}
                     </div>
                 </div>
