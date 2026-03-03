@@ -1,62 +1,77 @@
-import {describe, expect, it} from "vitest";
-import {screen, render, getByTestId} from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
+import { describe, it, expect, vi, beforeEach } from "vitest"
 import ProductCard from "./ProductCard"
 
-describe("ProductCard component", () => {
-    const mockProduct = {
-        id: 1,
-        title: "Test Product",
-        price: 9.99,
-        image: "test.jpg"
-    }
-    it("ProductCard renders on screen", () => {
-        render(<ProductCard product={mockProduct}/>);
+// Mock QuantitySelector
+vi.mock("../../QuantitySelector/QuantitySelector", () => ({
+  default: ({ value, handler }) => (
+    <div>
+      <button onClick={() => handler(value + 1)}>Increase</button>
+      <span data-testid="quantity">{value}</span>
+    </div>
+  )
+}))
 
-        const card = screen.getByTestId("product-card");
-        const img = screen.getByRole("img");
-        const title = screen.getByTestId("title");
-        const price = screen.getByTestId("price");
-        const selector = screen.getByTestId("selector");
-        const addToCartBtn = screen.getByRole("button", {name: /add to cart/i})
+describe("ProductCard", () => {
 
-        expect(card).toBeInTheDocument();
-        expect(img).toBeInTheDocument();
-        expect(title).toBeInTheDocument();
-        expect(price).toBeInTheDocument();
-        expect(selector).toBeInTheDocument();
-        expect(addToCartBtn).toBeInTheDocument();
-    })
+  const mockProduct = {
+    id: 1,
+    title: "Test Product",
+    price: 50,
+    image: "test.jpg"
+  }
 
-    it("ProductCard testing incrementation", async () => {
-        render(<ProductCard product={mockProduct}/>);
+  const mockCart = {
+    addToCart: vi.fn()
+  }
 
-        const user = userEvent.setup();
-        const increment = screen.getByRole("button", {name: "+"});
-        const quantity = screen.getByTestId("quantity");
-        
-        await user.click(increment);
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
 
-        console.log(quantity)
+  it("renders product title", () => {
+    render(<ProductCard product={mockProduct} cart={mockCart} />)
 
-        expect(quantity).toHaveTextContent(2);
-    })
+    expect(screen.getByTestId("title")).toHaveTextContent("Test Product")
+  })
 
-    it("ProductCard testing decrementation", async () => {
-        render(<ProductCard product={mockProduct}/>)
+  it("renders product price", () => {
+    render(<ProductCard product={mockProduct} cart={mockCart} />)
 
-        const user = userEvent.setup()
-        const increment = screen.getByRole("button", {name: "+"});
-        const decrement = screen.getByRole("button", {name: "-"});
-        const quantity = screen.getByTestId("quantity");
-        
-        await user.click(increment);
-        await user.click(increment);
-        await user.click(decrement);
+    expect(screen.getByTestId("price")).toHaveTextContent("$50")
+  })
 
+  it("calls addToCart with correct product and default quantity", async () => {
+    const user = userEvent.setup()
+    render(<ProductCard product={mockProduct} cart={mockCart} />)
 
-        console.log(quantity)
+    await user.click(screen.getByText("ADD TO CART"))
 
-        expect(quantity).toHaveTextContent(2);
-    })
+    expect(mockCart.addToCart)
+      .toHaveBeenCalledWith(mockProduct, 1)
+  })
+
+  it("changes quantity and sends updated quantity", async () => {
+    const user = userEvent.setup()
+    render(<ProductCard product={mockProduct} cart={mockCart} />)
+
+    await user.click(screen.getByText("Increase"))
+    await user.click(screen.getByText("ADD TO CART"))
+
+    expect(mockCart.addToCart)
+      .toHaveBeenCalledWith(mockProduct, 2)
+  })
+
+  it("resets quantity to 1 after adding to cart", async () => {
+    const user = userEvent.setup()
+    render(<ProductCard product={mockProduct} cart={mockCart} />)
+
+    await user.click(screen.getByText("Increase"))
+    await user.click(screen.getByText("ADD TO CART"))
+
+    expect(screen.getByTestId("quantity"))
+      .toHaveTextContent("1")
+  })
+
 })
