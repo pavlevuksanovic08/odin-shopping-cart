@@ -3,7 +3,7 @@ import model1 from '../../assets/images/model1a.jpg'
 import Himher from './Herhim/Herhim';
 import Products from '../Products/Products';
 import Additional from './Additional/Additional';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useOutletContext } from 'react-router-dom';
 
 export async function loader() {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -19,6 +19,7 @@ export async function loader() {
 function Home() {
 
     const products = useLoaderData();
+    const cart = useOutletContext();
 
     return (
         <main style={{height: "fit-content"}}>  
@@ -29,7 +30,7 @@ function Home() {
                     </div>
                 </section>
                 <Himher />
-                <Products products={products}/>
+                <Products products={products} cart={cart}/>
                 <Additional />
             </div>
         </main>
