@@ -9,17 +9,17 @@ function Navigation() {
         <nav className={styles.navigation}>
             <ul className={styles.navigation}>
                 <li className={styles.iconContainer}>
-                    <Link href="/" className={styles.navLink}>
+                    <Link to="/" className={styles.navLink}>
                         <img src={houseIcon} alt="Home" className={styles.navIcon} />
                     </Link>
                 </li>
                 <li className={styles.iconContainer}>
-                    <Link href="/shop" className={styles.navLink}>
+                    <Link to="/shop" className={styles.navLink}>
                         <img src={storeIcon} alt="Shop" className={styles.navIcon} />
                     </Link>
                 </li>
                 <li className={styles.iconContainer}>
-                    <Link href="/cart" className={styles.navLink}>
+                    <Link to="/cart" className={styles.navLink}>
                         <img src={cartIcon} alt="Cart" className={styles.navIcon} />
                     </Link>
                 </li>
