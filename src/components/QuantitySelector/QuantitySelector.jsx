@@ -1,28 +1,27 @@
 import { useState } from "react"
 import styles from "./QuantitySelector.module.css"
 
-function QuantitySelector({ value }) {
-    const [quantity, setQuantity] = useState(value);
+function QuantitySelector({ value, handler }) {
 
     function decreaseQuantity() {
-        const newQuantity = quantity - 1;
-        if (newQuantity > 0) setQuantity(newQuantity);
+        const newQuantity = value - 1;
+        if (newQuantity > 0) handler(newQuantity);
     }
 
     function increaseQuantity() {
-        const newQuantity = quantity + 1;
-        if (newQuantity < 100) setQuantity(newQuantity);
+        const newQuantity = value + 1;
+        if (newQuantity < 100) handler(newQuantity);
     }
 
     function inputChange(e) {
         if (e.target.value === "") {
-            setQuantity("");
+            handler("");
             return;
         }
         const val = Number(e.target.value);
-        if (val < 1) setQuantity(1);
-        else if (val > 99) setQuantity(99);
-        else setQuantity(val)
+        if (val < 1) handler(1);
+        else if (val > 99) handler(99);
+        else handler(val)
 }
 
     return (
@@ -32,7 +31,7 @@ function QuantitySelector({ value }) {
                 type="number"
                 className={styles.input}
                 data-testid="quantity"
-                value={quantity}
+                defaultValue={value}
                 onChange={inputChange}
             />                                
             <button className={`${styles.btn} ${styles.right}`} onClick={increaseQuantity}>+</button>

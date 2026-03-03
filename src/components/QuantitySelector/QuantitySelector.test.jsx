@@ -1,87 +1,98 @@
-import { describe, it, expect } from "vitest"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
+import { describe, it, expect, vi, beforeEach } from "vitest"
 import QuantitySelector from "./QuantitySelector"
 
 describe("QuantitySelector", () => {
 
-    it("renders with initial value", () => {
-        render(<QuantitySelector value={5} />)
+  const mockHandler = vi.fn()
 
-        const input = screen.getByRole("spinbutton")
-        expect(input).toHaveValue(5)
-    })
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
 
-    it("increases quantity when + is clicked", async () => {
-        render(<QuantitySelector value={5} />)
+  function setup(value = 1) {
+    render(<QuantitySelector value={value} handler={mockHandler} />)
+    const decreaseBtn = screen.getByRole("button", { name: "-" })
+    const increaseBtn = screen.getByRole("button", { name: "+" })
+    const input = screen.getByRole("spinbutton")
+    return { decreaseBtn, increaseBtn, input }
+  }
 
-        const user = userEvent.setup()
-        const plusButton = screen.getByText("+")
-        const input = screen.getByRole("spinbutton")
+  it("calls handler with increased value", async () => {
+    const user = userEvent.setup()
+    const { increaseBtn } = setup(5)
 
-        await user.click(plusButton)
+    await user.click(increaseBtn)
 
-        expect(input).toHaveValue(6)
-    })
+    expect(mockHandler).toHaveBeenCalledWith(6)
+  })
 
-    it("decreases quantity when - is clicked", async () => {
-        render(<QuantitySelector value={5} />)
+  it("calls handler with decreased value", async () => {
+    const user = userEvent.setup()
+    const { decreaseBtn } = setup(5)
 
-        const user = userEvent.setup()
-        const minusButton = screen.getByText("-")
-        const input = screen.getByRole("spinbutton")
+    await user.click(decreaseBtn)
 
-        await user.click(minusButton)
+    expect(mockHandler).toHaveBeenCalledWith(4)
+  })
 
-        expect(input).toHaveValue(4)
-    })
+  it("does not go below 1", async () => {
+    const user = userEvent.setup()
+    const { decreaseBtn } = setup(1)
 
-    it("does not decrease below 1", async () => {
-        render(<QuantitySelector value={1} />)
+    await user.click(decreaseBtn)
 
-        const user = userEvent.setup()
-        const minusButton = screen.getByText("-")
-        const input = screen.getByRole("spinbutton")
+    expect(mockHandler).not.toHaveBeenCalled()
+  })
 
-        await user.click(minusButton)
+  it("does not go above 99", async () => {
+    const user = userEvent.setup()
+    const { increaseBtn } = setup(99)
 
-        expect(input).toHaveValue(1)
-    })
+    await user.click(increaseBtn)
 
-    it("does not increase above 99", async () => {
-        render(<QuantitySelector value={99} />)
+    expect(mockHandler).not.toHaveBeenCalled()
+  })
 
-        const user = userEvent.setup()
-        const plusButton = screen.getByText("+")
-        const input = screen.getByRole("spinbutton")
+  it("handles direct input change within range", async () => {
+    const user = userEvent.setup()
+    const { input } = setup(5)
 
-        await user.click(plusButton)
+    await user.clear(input)
 
-        expect(input).toHaveValue(99)
-    })
+    await user.type(input, "10")
 
-    it("updates value when typing valid number", async () => {
-        render(<QuantitySelector value={5} />)
+    expect(mockHandler).toHaveBeenLastCalledWith(10)
+  })
 
-        const user = userEvent.setup()
-        const input = screen.getByRole("spinbutton")
+  it("forces value to 1 if input is below range", async () => {
+    const user = userEvent.setup()
+    const { input } = setup(5)
 
-        await user.clear(input)
-        await user.type(input, "10")
+    await user.clear(input)
+    await user.type(input, "0")
 
-        expect(input).toHaveValue(10)
-    })
+    expect(mockHandler).toHaveBeenLastCalledWith(1)
+  })
 
-    it("does not update when typing 0 or negative number", async () => {
-        render(<QuantitySelector value={5} />)
+  it("forces value to 99 if input is above range", async () => {
+    const user = userEvent.setup()
+    const { input } = setup(5)
 
-        const user = userEvent.setup()
-        const input = screen.getByRole("spinbutton")
+    await user.clear(input)
+    await user.type(input, "150")
 
-        await user.clear(input)
-        await user.type(input, "0")
+    expect(mockHandler).toHaveBeenLastCalledWith(99)
+  })
 
-        expect(input).toHaveValue(1)
-    })
+  it("allows empty input", async () => {
+    const user = userEvent.setup()
+    const { input } = setup(5)
+
+    await user.clear(input)
+
+    expect(mockHandler).toHaveBeenCalledWith("")
+  })
 
 })
