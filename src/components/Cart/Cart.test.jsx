@@ -11,16 +11,20 @@ vi.mock("./CartCard/CartCard", () => ({
   )
 }))
 
+const mockNaviagte = vi.fn();
+
 // ---- Mock react-router useOutletContext ----
 vi.mock("react-router-dom", async () => {
   const actual = await vi.importActual("react-router-dom")
   return {
     ...actual,
-    useOutletContext: vi.fn()
+    useOutletContext: vi.fn(),
+    useNavigate: () => mockNaviagte
   }
 })
 
-import { useOutletContext } from "react-router-dom"
+import { useNavigate, useOutletContext } from "react-router-dom"
+import userEvent from "@testing-library/user-event";
 
 describe("Cart component", () => {
 
@@ -39,6 +43,22 @@ describe("Cart component", () => {
     expect(screen.getByText(/empty/i)).toBeInTheDocument()
     expect(screen.getByRole("button", { name: /return to shop/i }))
       .toBeInTheDocument()
+  })
+
+  if("return to shop button test", async () => {
+    useOutletContext.mockReturnValue({
+      cartItems: []
+    })
+
+    render(<Cart />)
+
+    const user = userEvent.setup();
+    const button = screen.getByRole("button", {name: /Return to shop/i});
+
+    await user.click(button);
+
+    expect(mockNaviagte).toHaveBeenCalledWith("/shop")
+    
   })
 
   it("renders cart items when not empty", () => {

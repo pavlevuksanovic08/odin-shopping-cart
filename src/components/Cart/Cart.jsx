@@ -1,12 +1,13 @@
 import { Fragment } from "react";
 import { ShoppingBasket } from "lucide-react";
-import { useOutletContext } from "react-router-dom"
+import { useNavigate, useOutletContext } from "react-router-dom"
 import styles from "./Cart.module.css"
 import CartCard from "./CartCard/CartCard";
 
 function Cart() {
 
     const cart = useOutletContext();
+    const navigate = useNavigate();
     
     function totalPrice() {
         return cart.cartItems.reduce((total, current) => total + current.item.price * current.quantity, 0)
@@ -26,7 +27,7 @@ function Cart() {
                                     <ShoppingBasket strokeWidth={1} className={styles.icon} />
                                     <p className={styles.mainTxt}>Your cart is <span style={{color: "#E2B82F"}}>empty</span>.</p>
                                     <p className={styles.txt}>Must add items on the cart before you preceed to checkout.</p>
-                                    <button className={styles.emptyBtn}>RETURN TO SHOP</button>
+                                    <button className={styles.emptyBtn} onClick={() => navigate("/shop")}>RETURN TO SHOP</button>
                                 </div>
                             </> 
                             : <>
