@@ -17,7 +17,7 @@ function CartCard({ product, cart }) {
         <article>
             <div className={styles.card}>
                 <div>
-                    <img src={product.item.image} alt={product.item.title}/>
+                    <img src={product.item.image} alt={product.item.title}  className={styles.image}/>
                 </div>
                 <div className={styles.cardData}>
                     <div className={styles.title}>
