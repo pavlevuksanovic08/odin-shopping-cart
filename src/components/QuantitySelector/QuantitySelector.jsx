@@ -1,4 +1,3 @@
-import { useState } from "react"
 import styles from "./QuantitySelector.module.css"
 
 function QuantitySelector({ value, handler }) {
@@ -31,7 +30,7 @@ function QuantitySelector({ value, handler }) {
                 type="number"
                 className={styles.input}
                 data-testid="quantity"
-                defaultValue={value}
+                value={value}
                 onChange={inputChange}
             />                                
             <button className={`${styles.btn} ${styles.right}`} onClick={increaseQuantity}>+</button>
