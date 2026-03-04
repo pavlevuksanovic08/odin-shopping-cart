@@ -1,10 +1,14 @@
-import { describe, it, expect } from "vitest"
+import { describe, it, expect, vi } from "vitest"
 import { screen, render, findByTestId } from "@testing-library/react"
 import { createMemoryRouter, RouterProvider, MemoryRouter } from "react-router-dom"
 import App from "../../App"
 import Home from "../Home/Home"
 import ErrorPage from "./ErrorPage"
 import userEvent from "@testing-library/user-event"
+
+vi.mock("../Home/Home", () => ({
+    default: () => <div data-testid="home-component">Home Page</div>
+}))
 
 describe("ErrorPage component", () => {
     it("Renders error page correctly", () => {
