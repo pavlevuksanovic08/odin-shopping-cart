@@ -3,7 +3,7 @@ import styles from './Header.module.css'
 import logo from '../../assets/logo/paulo_transparent.png'
 import { useEffect, useState } from 'react'
 
-function Header() {
+function Header({ cartLength }) {
     const [show, setShow] = useState(true);
     const [transparent, setTransparent] = useState(true)
 
@@ -34,7 +34,7 @@ function Header() {
         <header className={`${styles.header} ${show ? "" : `${styles.hide}`} ${!transparent ? "" : `${styles.transparent}`}`}>
             <div className={styles.headerDiv}> 
                 <img src={logo} alt="Logo" className={styles.logo} />
-                <Navigation />
+                <Navigation cartLength={cartLength}/>
             </div>
         </header>
     )

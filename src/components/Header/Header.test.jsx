@@ -7,7 +7,7 @@ describe('Header component', () => {
   it('renders the logo', () => {
     render(
       <MemoryRouter>
-        <Header />
+        <Header cartLength={3}/>
       </MemoryRouter>
     )
     const logo = screen.getByAltText(/Logo/i)
@@ -16,7 +16,7 @@ describe('Header component', () => {
   it('renders the navigation', () => {
     render(
       <MemoryRouter>
-        <Header />
+        <Header cartLength={3}/>
       </MemoryRouter>
     )
     const navigation = screen.getByRole('navigation')
