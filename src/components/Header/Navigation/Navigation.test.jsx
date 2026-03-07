@@ -7,7 +7,7 @@ describe('Navigation component', () => {
     it('renders the navigation links with paths', () => {
         render(
             <MemoryRouter>
-                <Navigation />
+                <Navigation cartLength={3}/>
             </MemoryRouter>
         
         )
@@ -19,5 +19,25 @@ describe('Navigation component', () => {
         expect(homeLink).toHaveAttribute("href", "/")
         expect(shopLink).toHaveAttribute("href", "/shop")
         expect(cartLink).toHaveAttribute("href", "/cart")
+    })
+    
+    it("cart link has number of items", () => {
+        render(
+            <MemoryRouter>
+                <Navigation cartLength={3}/>
+            </MemoryRouter>
+        )
+
+        expect(screen.getByText("3")).toBeInTheDocument();
+    })
+
+    it("cart link has NOT number of items", () => {
+        render(
+            <MemoryRouter>
+                <Navigation cartLength={0}/>
+            </MemoryRouter>
+        )
+        const temp = screen.queryByTestId("cartLength")
+        expect(temp).not.toBeInTheDocument();
     })
 })

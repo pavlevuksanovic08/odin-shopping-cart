@@ -4,7 +4,7 @@ import storeIcon from "../../../assets/icons/store.svg"
 import cartIcon from "../../../assets/icons/shopping-cart.svg"
 import { Link } from "react-router-dom"
 
-function Navigation() {
+function Navigation({ cartLength }) {
     return (
         <nav className={styles.navigation}>
             <ul className={styles.navigation}>
@@ -18,9 +18,14 @@ function Navigation() {
                         <img src={storeIcon} alt="Shop" className={styles.navIcon} />
                     </Link>
                 </li>
-                <li className={styles.iconContainer}>
+                <li className={styles.iconContainer} style={{"position": "relative"}}>
                     <Link to="/cart" className={styles.navLink}>
                         <img src={cartIcon} alt="Cart" className={styles.navIcon} />
+                        {cartLength !== 0 && 
+                            <div data-testid="cartLength" className={styles.cartLength}>
+                                {cartLength}
+                            </div>
+                        }
                     </Link>
                 </li>
             </ul>

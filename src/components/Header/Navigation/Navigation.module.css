@@ -19,3 +19,19 @@
     width: clamp(2rem, 3vw, 4rem);
     height: auto;
 }
+
+.cartLength {
+    position: absolute;
+    bottom: 65%;
+    left: 65%;
+    border-radius: 20px;
+    background-color: #E2B82F;
+    color: white;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    box-sizing: border-box;
+}
