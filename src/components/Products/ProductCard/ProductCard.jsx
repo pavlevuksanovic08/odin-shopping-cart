@@ -2,7 +2,7 @@ import { useState } from "react"
 import styles from "./ProductCard.module.css"
 import QuantitySelector from "../../QuantitySelector/QuantitySelector";
 
-function ProductCard({ product, cart }) {
+function ProductCard({ product, cart, setShow }) {
 
     const [quantity, setQuantity] = useState(1);
 
@@ -12,7 +12,7 @@ function ProductCard({ product, cart }) {
 
     function addToCartHandler() {
         cart.addToCart(product, quantity);
-        setQuantity(1);
+        setShow(true);
     }
 
     return (
