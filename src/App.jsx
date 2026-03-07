@@ -2,6 +2,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header"
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
+import ScrollToTop from "./ScrollToTop";
 function App() {
 
   const [cartItems, setCartItems] = useState([])
@@ -36,6 +37,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       <Header cartLength={cartItems.length}/>
       <Outlet context={cart}/>
       <Footer />
