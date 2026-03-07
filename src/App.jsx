@@ -29,7 +29,9 @@ function App() {
           i.item.id === id ? {...i, quantity: quantity} : i
         )
       )
-    }
+    },
+    totalPrice: () => 
+      cartItems.reduce((total, current) => total + current.item.price * current.quantity, 0)
   }
 
   return (
