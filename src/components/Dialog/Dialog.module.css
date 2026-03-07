@@ -1,0 +1,62 @@
+.dialog {
+    z-index: 10000;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    
+    margin: 0;
+    border: none;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    padding: 2rem;
+    max-width: 90vw;
+    background-color: #1b1b1b;
+    color: white;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
+}
+
+.msg {
+    display: flex;
+    background-color: lightgreen;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 1px 20px;
+}
+
+.pricing {
+    display: flex;
+    justify-content: space-between;
+    * {
+        font-size: clamp(1.5rem, 1.75vw, 2rem);
+    }
+}
+
+.btns {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.btn {
+    font-family: "GFS Didot";
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    background-color: #E2B82F;
+    padding: 0.3rem;
+    transition: transform 0.1s ease;
+
+}
+
+.btn:active {
+    background-color: #cca62b;
+    transform: scale(0.97);
+}
