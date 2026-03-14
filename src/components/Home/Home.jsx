@@ -4,6 +4,7 @@ import Himher from './Herhim/Herhim';
 import Products from '../Products/Products';
 import Additional from './Additional/Additional';
 import { useLoaderData, useOutletContext } from 'react-router-dom';
+import mobileImg from '../../assets/images/model1aPhone.jpg'
 
 export async function loader() {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -26,7 +27,11 @@ function Home() {
             <div data-testid="home-component" style={{height: 100 + "%"}} className={styles.home}>
                 <section>
                     <div className={styles.modelContainer}>
-                        <img src={model1} alt="Model" className={styles.modelImg}/>
+                        <picture>
+                            <source media="(max-width: 800px)" srcset={mobileImg} />
+                            <img src={model1} alt="Model" className={styles.modelImg}/>
+
+                        </picture>
                     </div>
                 </section>
                 <Himher />

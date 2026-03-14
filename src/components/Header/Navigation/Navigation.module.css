@@ -16,7 +16,7 @@
 }
 
 .navIcon {
-    width: clamp(2rem, 3vw, 4rem);
+    width: clamp(1.5rem, 3vw, 4rem);
     height: auto;
 }
 

@@ -21,8 +21,16 @@
 .products {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--index);
     padding: 2rem var(--index);
     box-sizing: border-box;
+}
+
+@media (width <= 800px) {
+    .products {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 2rem 3rem;
+        gap: 3rem;
+    }
 }

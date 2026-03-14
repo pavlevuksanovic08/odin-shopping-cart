@@ -8,9 +8,17 @@
 }
 
 .logo {
-    width: clamp(10rem, 15vw, 30rem);
+    width: clamp(8rem, 8.5vw, 9rem)
 }
 
 .text {
-    font-size: clamp(1rem, 3vh, 5rem)
+    font-size: clamp(0.6rem, 2vw, 3rem)
+}
+
+@media (width <= 800px) {
+    .footer {
+        padding: 0.5rem var(--index);
+        flex-direction: column;
+    } 
+
 }

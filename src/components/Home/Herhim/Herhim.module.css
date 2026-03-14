@@ -18,7 +18,7 @@
 }
 
 .heading {
-    font-size: clamp(2rem, 5vw, 4rem);
+    font-size: clamp(1.5rem, 7vw, 6rem);
     text-align: center;
     font-weight: normal;
 }
@@ -39,4 +39,23 @@
 
 .itemTxt {
     font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@media (width <= 800px) {
+    .himherContainer {
+        flex-direction: column;
+        padding: 2rem var(--index);
+    }
+
+    .item {
+        width: 100%;
+    }
+
+    .modelImg {
+        width: 100%;
+    }
+
+    .itemTxt {
+        font-size: clamp(2rem, 3.5vw, 4rem);
+    }
 }

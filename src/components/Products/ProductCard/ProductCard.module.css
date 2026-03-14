@@ -1,14 +1,19 @@
 /* Card wrapper */
 .card {
-    max-width: 20vw;
+    max-width: 100%;
     height: 100%;
     box-sizing: border-box;
+    margin: 0 auto;        /* Centriranje cele kartice u odnosu na article */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Image container */
 .imgContainer {
+    width: 100%;           /* Razvlači sivi box na punu širinu kartice */
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: #262626;
     padding: 2rem;
     box-sizing: border-box;
@@ -16,11 +21,53 @@
 
 /* Product image */
 .image {
-    width: auto;
+    width: 100%;           /* Slika popunjava širinu sivog kontejnera */
+    height: auto;
     max-height: 10vw;
+    object-fit: contain;   /* Drži sliku u sredini bez rastezanja */
+}
+
+.productData {
+    width: 100%;           /* Tekstualni deo popunjava širinu */
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 1rem;
+}
+
+.title {
+    font-size: clamp(0.5rem, 1.2vw, 3rem);
+    width: 100%;
+    margin: 0;
+}
+
+.price {
+    font-size: clamp(0.5rem, 1.2vw, 3rem);
+    font-weight: 700;
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.priceAndQuantity {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+/* Add to cart wrapper */
+.addToCart {
+    display: flex;
+    width: 100%;           /* Dugme i selektor idu od ivice do ivice */
+    gap: 10px;
+    max-height: 10vh;
+    height: 5vh;
+    --radius: 5px;
 }
 
 .addToCartBtn {
+    flex-grow: 1;          /* Dugme popunjava sav preostali prostor desno */
     background-color: #E2B82F;
     border: none;
     border-radius: var(--radius);
@@ -28,47 +75,24 @@
     font-size: 12px;
     font-family: "GFS Didot", serif;
     font-weight: 500;
+    cursor: pointer;
     transition: transform 0.1s ease;
-
 }
 
 .addToCartBtn:active {
     background-color: #cca62b;
-    transform: scale(0.97)
+    transform: scale(0.97);
 }
 
-/* Add to cart wrapper */
-.addToCart {
-    display: flex;
-    gap: 20px;
-    max-height: 10vh;
-    height: 5vh;
-    --radius: 5px;
+@media (width <= 800px) {
+    .productData {
+        gap: 1rem;
+    }
+    .title {
+        font-size: clamp(1rem, 1.5vw, 3rem);
+    }
+    .price {
+        font-size: clamp(1.5rem, 2vw, 2.5rem);
 
-}
-
-.productData {
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.priceAndQuantity {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.title {
-    font-size: clamp(0.5rem, 1.2vw, 3rem);
-}
-
-.price {
-    font-size: clamp(0.5rem, 1.2vw, 3rem);
-    font-weight: 700;
-}
-
-.quantityBtn:active {
-    background-color: #222222;
+    }
 }

@@ -10,7 +10,7 @@ function Additional() {
         <section data-testid="additional">
             <div className={styles.placeholder}>
                 <div className={styles.card}>
-                    <HandHeart size={size} strokeWidth={strokeWidth} aria-label="Hand heart icon" />
+                    <HandHeart className={styles.icon} size={size} strokeWidth={strokeWidth} aria-label="Hand heart icon" />
                     <p className={styles.text}>Free 30-day returns</p>
                 </div>
                 <div className={styles.separator} />
@@ -18,7 +18,7 @@ function Additional() {
                     <Truck size={size} strokeWidth={strokeWidth} aria-label="Truck icon" />
                     <p className={styles.text}>Get your gifts in time - Free shipping on orders $75+</p>
                 </div>
-                <div className={styles.separator} />
+                <div className={`${styles.separator} ${styles.hide}`} />
                 <div className={styles.card}>
                     <Gift size={size} strokeWidth={strokeWidth} aria-label="Gift icon" />
                     <p className={styles.text}>Gift packaging available</p>
