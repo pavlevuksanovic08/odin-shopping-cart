@@ -13,13 +13,20 @@ html, body, #root {
     color: white;
 
     --margin: 5%;
-    --index: 5rem;
+    --index: 4rem;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+
+@media (width <= 1000px) {
+    html, body, #root {
+        --index: 2rem;
+    }
 }
 
 @media (width <= 676px) {

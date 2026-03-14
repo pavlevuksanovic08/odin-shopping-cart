@@ -1,6 +1,6 @@
 .shop {
-    margin-top: 30vh;
-    margin-bottom: 20vh;
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 .productsContainer {
@@ -12,11 +12,22 @@
 .products {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--index)
 }
 
 .heading {
     text-align: center;
     font-size: clamp(3rem, 4vw, 6rem);
     font-weight: normal;
+}
+
+@media (width <= 676px) {
+    .shop {
+        margin-top: 30%;
+        margin-bottom: 30%;
+    }
+    .products {
+        gap: 3rem;
+    }
 }
