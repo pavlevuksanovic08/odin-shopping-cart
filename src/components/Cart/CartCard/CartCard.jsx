@@ -26,12 +26,12 @@ function CartCard({ product, cart }) {
                     <div>
                         <p className={styles.price}>${product.item.price}</p>
                     </div>
-                    <div>
+                    <div className={styles.quantity}>
                         <QuantitySelector value={quantity} handler={handleQuantityChange}/>
                     </div>
                 </div>
                 <div className={styles.xDiv}>
-                    <X className={styles.x} size={32} onClick={() => cart.removeFromCart(product.item.id)}/>
+                    <X className={styles.x} onClick={() => cart.removeFromCart(product.item.id)}/>
                 </div>
             </div>
         </article>

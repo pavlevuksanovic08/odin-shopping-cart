@@ -41,7 +41,7 @@
 }
 
 .summary {
-    width: 450px;
+    width: 30vw;
     font-size: clamp(1.1rem, 2vw, 1.5rem);
 
 }
@@ -110,4 +110,17 @@
     composes: btn;
     width: auto;
     padding: 1.3rem;
+}
+
+
+@media (width <= 800px) {
+    .cart {
+        flex-direction: column;
+    }
+
+    .summary {
+        width: 100%;
+        padding: 0 2rem;
+        box-sizing: border-box;
+    }
 }
