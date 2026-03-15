@@ -5,10 +5,11 @@
     justify-content: space-between;
     height: fit-content;
     padding: 1rem var(--index);
+    margin-top: 5rem;
 }
 
 .logo {
-    width: clamp(8rem, 8.5vw, 9rem)
+    width: clamp(12rem, 16vw, 20rem)
 }
 
 .text {
