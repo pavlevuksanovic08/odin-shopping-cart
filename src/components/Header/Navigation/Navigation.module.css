@@ -18,6 +18,8 @@
 .navIcon {
     width: clamp(1.5rem, 3vw, 4rem);
     height: auto;
+    min-width: 35px;
+    user-select: none;
 }
 
 .cartLength {
@@ -34,4 +36,12 @@
     align-items: center;
     margin: 0;
     box-sizing: border-box;
+}
+
+@media (width <= 676px) {
+    .cartLength {
+        height: 20px;
+        width: 20px;
+        font-size: 14px;
+    }
 }
