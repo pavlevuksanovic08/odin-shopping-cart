@@ -1,8 +1,9 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { ShoppingBasket } from "lucide-react";
 import { useNavigate, useOutletContext } from "react-router-dom"
 import styles from "./Cart.module.css"
 import CartCard from "./CartCard/CartCard";
+
 
 function Cart() {
 
@@ -12,6 +13,10 @@ function Cart() {
     function totalPrice() {
         return cart.cartItems.reduce((total, current) => total + current.item.price * current.quantity, 0)
     }
+
+    useEffect(() => {
+        document.title = "PAULO® | Your Shopping Bag — Authentic Selection";
+    }, []);
 
     return (
         <main>

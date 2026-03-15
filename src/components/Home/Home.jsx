@@ -5,6 +5,7 @@ import Products from '../Products/Products';
 import Additional from './Additional/Additional';
 import { useLoaderData, useOutletContext } from 'react-router-dom';
 import mobileImg from '../../assets/images/model1aPhone.jpg'
+import { useEffect } from 'react';
 
 export async function loader() {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -22,13 +23,17 @@ function Home() {
     const products = useLoaderData();
     const cart = useOutletContext();
 
+    useEffect(() => {
+        document.title = "PAULO® | Handcrafted Jewelry — Official Site";
+    }, []);
+
     return (
         <main style={{height: "fit-content"}}>  
             <div data-testid="home-component" style={{height: 100 + "%"}} className={styles.home}>
                 <section>
                     <div className={styles.modelContainer}>
                         <picture>
-                            <source media="(max-width: 800px)" srcset={mobileImg} />
+                            <source media="(max-width: 800px)" srcSet={mobileImg} />
                             <img src={model1} alt="Model" className={styles.modelImg}/>
 
                         </picture>
