@@ -4,23 +4,24 @@
     background-color: #313131;
     height: 100%;
     width: 100%;
-    padding: 10px;
-    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    padding: 0 1rem;
+    font-size: clamp(0.7rem, 1.5vw, 1.15rem);
     box-sizing: border-box;
 }
 
 .quantity {
     display: flex;
-    height: 100%;
+    width: fit-content;
+    height: 40px;
      --border-color: #191919;
 }
 
 .input {
     composes: btnInput;
-    max-width: 3rem;
-    width: fit-content;
     text-align: center;
-
+    width: min-content;
+    max-width: 3rem;
+    height: 100%;
 }
 
 .input:focus {
@@ -30,6 +31,7 @@
 
 .btn {
     composes: btnInput;
+    user-select: none;
 }
 
 .btn:active {
@@ -47,4 +49,19 @@
     border-radius: 0 var(--index) var(--index) 0;
     border-left: 1px solid var(--border-color);
 
+}
+
+@media (width <= 676px) {
+    .quantity {
+        height: 45px;
+        box-sizing: border-box;
+    }
+
+    .btnInput {
+        padding: 0 0.7rem;
+    }
+
+    .input {
+        max-width: 2rem;
+    }
 }
