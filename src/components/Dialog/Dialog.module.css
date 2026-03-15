@@ -3,8 +3,8 @@
     position: fixed;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
-    
+    transform: translateX(-50%) translateY(-50%);
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     margin: 0;
     border: none;
     background: white;
@@ -13,11 +13,13 @@
     max-width: 90vw;
     background-color: #1b1b1b;
     color: white;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 dialog::backdrop {
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0);
+    animation: fadeIn 0.4 ease-out forwards;
 }
 
 .msg {
@@ -48,6 +50,7 @@ dialog::backdrop {
     font-family: "GFS Didot";
     font-size: clamp(0.8rem, 1.2vw, 1rem);
     width: 100%;
+    min-width: 5vw;
     border: none;
     border-radius: 12px;
     background-color: #E2B82F;
@@ -59,4 +62,30 @@ dialog::backdrop {
 .btn:active {
     background-color: #cca62b;
     transform: scale(0.97);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateX(-50%) translateY(100vh) translateZ(0);
+    }
+
+    to {
+        transform: translateX(-50%) translateY(-50%) translateZ(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        background: rgba(0, 0, 0, 0.9);
+    }
+}
+
+@media (width <= 600px) {
+    .btn {
+        min-width: 20vw;
+        font-size: clamp(0.8rem, 1.2vw, 1.2rem)
+    }
+    .dialog {
+        width: 70vw;
+    }
 }
