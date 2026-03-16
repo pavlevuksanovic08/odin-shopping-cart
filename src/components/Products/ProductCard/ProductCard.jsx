@@ -12,6 +12,7 @@ function ProductCard({ product, cart, setShow }) {
 
     function addToCartHandler() {
         cart.addToCart(product, quantity);
+        setQuantity(1)
         setShow(true);
     }
 

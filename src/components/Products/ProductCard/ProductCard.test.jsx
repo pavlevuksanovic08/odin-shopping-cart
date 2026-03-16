@@ -26,25 +26,27 @@ describe("ProductCard", () => {
     addToCart: vi.fn()
   }
 
+  const mockSetShow = vi.fn();
+
   beforeEach(() => {
     vi.clearAllMocks()
   })
 
   it("renders product title", () => {
-    render(<ProductCard product={mockProduct} cart={mockCart} />)
+    render(<ProductCard product={mockProduct} cart={mockCart} setShow={mockSetShow} />)
 
     expect(screen.getByTestId("title")).toHaveTextContent("Test Product")
   })
 
   it("renders product price", () => {
-    render(<ProductCard product={mockProduct} cart={mockCart} />)
+    render(<ProductCard product={mockProduct} cart={mockCart} setShow={mockSetShow} />)
 
     expect(screen.getByTestId("price")).toHaveTextContent("$50")
   })
 
   it("calls addToCart with correct product and default quantity", async () => {
     const user = userEvent.setup()
-    render(<ProductCard product={mockProduct} cart={mockCart} />)
+    render(<ProductCard product={mockProduct} cart={mockCart} setShow={mockSetShow} />)
 
     await user.click(screen.getByText("ADD TO CART"))
 
@@ -54,7 +56,7 @@ describe("ProductCard", () => {
 
   it("changes quantity and sends updated quantity", async () => {
     const user = userEvent.setup()
-    render(<ProductCard product={mockProduct} cart={mockCart} />)
+    render(<ProductCard product={mockProduct} cart={mockCart} setShow={mockSetShow}/>)
 
     await user.click(screen.getByText("Increase"))
     await user.click(screen.getByText("ADD TO CART"))
@@ -65,7 +67,7 @@ describe("ProductCard", () => {
 
   it("resets quantity to 1 after adding to cart", async () => {
     const user = userEvent.setup()
-    render(<ProductCard product={mockProduct} cart={mockCart} />)
+    render(<ProductCard product={mockProduct} cart={mockCart} setShow={mockSetShow}/>)
 
     await user.click(screen.getByText("Increase"))
     await user.click(screen.getByText("ADD TO CART"))
