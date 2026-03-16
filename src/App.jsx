@@ -1,11 +1,18 @@
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header"
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ScrollToTop from "./ScrollToTop";
 function App() {
 
-  const [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = useState(() => {
+    const saved = localStorage.getItem("cartItems");
+    try {
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return []; // U slučaju da je podatak u memoriji korumpiran
+    }
+  });  
   const cart = {
     cartItems,
     addToCart: (item, quantity) => {
@@ -34,6 +41,10 @@ function App() {
     totalPrice: () => 
       cartItems.reduce((total, current) => total + current.item.price * current.quantity, 0)
   }
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems))
+  }, [cartItems])
 
   return (
     <>
