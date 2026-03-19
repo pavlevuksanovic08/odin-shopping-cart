@@ -35,13 +35,13 @@ main {
 
 @media (width <= 1000px) {
     html, body, #root {
-        --index: 2rem;
+        --index: 3rem;
     }
 }
 
 @media (width <= 676px) {
     html, body, #root {
-        --index: 1rem;
+        --index: 2.3rem;
 
     }
 }
