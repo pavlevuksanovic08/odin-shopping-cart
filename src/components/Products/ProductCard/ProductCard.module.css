@@ -95,6 +95,9 @@
     }
     .price {
         font-size: clamp(1.5rem, 2vw, 2.5rem);
+    }
 
+    .image {
+        max-height: 25vw;
     }
 }
