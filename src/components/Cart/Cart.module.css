@@ -71,7 +71,7 @@
     background-color: #E2B82F;
     padding: 1rem;
     transition: transform 0.1s ease;
-
+    color: black;
 }
 
 .btn:active {

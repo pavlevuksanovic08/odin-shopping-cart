@@ -29,11 +29,12 @@
 
 .productData {
     width: 100%;           /* Tekstualni deo popunjava širinu */
-    height: 50%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 1rem;
+    box-sizing: border-box;
+    margin-top: 1rem;
 }
 
 .title {
@@ -77,6 +78,7 @@
     font-weight: 500;
     cursor: pointer;
     transition: transform 0.1s ease;
+    color: black;
 }
 
 .addToCartBtn:active {

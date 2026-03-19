@@ -17,7 +17,7 @@ function Header({ cartLength }) {
 
             if (currentScroll >= 20) setTransparent(false);
 
-            if (currentScroll > lastScroll) setShow(false);
+            if (currentScroll > lastScroll && currentScroll > 50) setShow(false);
 
             if (currentScroll < lastScroll) setShow(true);
 

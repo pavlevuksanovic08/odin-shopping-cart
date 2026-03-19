@@ -22,6 +22,7 @@
     width: min-content;
     max-width: 3rem;
     height: 100%;
+    border-radius: 0;
 }
 
 .input:focus {
@@ -53,7 +54,7 @@
 
 @media (width <= 676px) {
     .quantity {
-        height: 45px;
+        height: 40px;
         box-sizing: border-box;
     }
 

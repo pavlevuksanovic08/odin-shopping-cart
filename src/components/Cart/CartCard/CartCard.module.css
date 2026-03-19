@@ -61,6 +61,7 @@
     }
     .xDiv {
         top: 50%;
-        transform: translateY(-50%)
+        transform: translateY(-50%);
+        right: 0.5rem;
     }
 }
