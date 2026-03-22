@@ -1,6 +1,6 @@
 import styles from "./Herhim.module.css";
-import herImg from "../../../assets/images/womanModel.jpg";
-import himImg from "../../../assets/images/manModel.jpg";
+import herImg from "../../../assets/images/womanModel.webp";
+import himImg from "../../../assets/images/manModel.webp";
 
 function Himher() {
     return (
