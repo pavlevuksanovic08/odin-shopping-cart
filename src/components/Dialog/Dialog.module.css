@@ -56,12 +56,17 @@ dialog::backdrop {
     background-color: #E2B82F;
     padding: 0.3rem;
     transition: transform 0.1s ease;
-
+    color: black;
 }
 
 .btn:active {
     background-color: #cca62b;
     transform: scale(0.97);
+}
+
+.btn:focus {
+    border: none;
+    outline: none;
 }
 
 @keyframes slideUp {
