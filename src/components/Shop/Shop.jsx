@@ -2,13 +2,20 @@ import ProductCard from "../Products/ProductCard/ProductCard"
 import { useLoaderData, useOutletContext } from "react-router-dom";
 import styles from "./Shop.module.css"
 import Dialog from "../Dialog/Dialog";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { Await } from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 export async function loader() {
-    const response = await fetch("https://fakestoreapi.com/products");
-    const data = await response.json();
-    const filtered = await data.filter(item => item.category == "jewelery");
-    return filtered;
+    const response = fetch("https://fakestoreapi.com/products")
+        .then(response => response.json())
+        .then(data => {
+            return data.filter(item => item.category == "jewelery")
+        })
+    
+    return {
+        products: response
+    }
 }
 
 function Shop() {
@@ -28,9 +35,13 @@ function Shop() {
                 <h1 className={styles.heading}>Shop</h1>
                 <div className={styles.productsContainer}>
                     <div className={styles.products}>
-                        {products.map(product => (
-                            <ProductCard product={product} key={product.id} cart={cart} setShow={setShow} />
-                        ))}
+                        <Suspense fallback={<Loading />}>
+                            <Await resolve={products.products}>
+                                {(resolved) => resolved.map(product => (
+                                    <ProductCard product={product} key={product.id} cart={cart} setShow={setShow} />
+                                ))}
+                            </Await>
+                        </Suspense>                       
                     </div>
                 </div>
                 

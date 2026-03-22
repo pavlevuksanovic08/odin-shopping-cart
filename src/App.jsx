@@ -1,8 +1,9 @@
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header"
-import { Outlet } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Outlet, useNavigation } from "react-router-dom";
+import { Suspense, useEffect, useState } from "react";
 import ScrollToTop from "./ScrollToTop";
+import Loading from "./components/Loading/Loading";
 function App() {
 
   const [cartItems, setCartItems] = useState(() => {
@@ -46,11 +47,17 @@ function App() {
     localStorage.setItem("cartItems", JSON.stringify(cartItems))
   }, [cartItems])
 
+  const navigation = useNavigation();
+
   return (
     <>
       <ScrollToTop />
       <Header cartLength={cartItems.length}/>
-      <Outlet context={cart}/>
+      {navigation.state === 'loading' ? <Loading /> : (
+      <Suspense fallback={<Loading />}>
+        <Outlet context={cart} />
+      </Suspense>
+      )}
       <Footer />
     </>
   )
