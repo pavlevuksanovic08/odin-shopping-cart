@@ -20,7 +20,7 @@
     composes: btnInput;
     text-align: center;
     width: min-content;
-    max-width: 3rem;
+    max-width: 3.5rem;
     height: 100%;
     border-radius: 0;
 }
@@ -54,15 +54,15 @@
 
 @media (width <= 676px) {
     .quantity {
-        height: 40px;
+        height: 35px;
         box-sizing: border-box;
     }
 
     .btnInput {
-        padding: 0 0.7rem;
+        padding: 0 0.6rem;
     }
 
     .input {
-        max-width: 2rem;
+        max-width: 2.5rem;
     }
 }
